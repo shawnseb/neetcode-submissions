@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> seen;
+        for(int i = 0; i<nums.size(); i++)
+        {
+            int j = target - nums[i];
+            auto it = seen.find(j);
+            if (it != seen.end()) {
+                std::vector<int> ans(2);
+                ans[0]=it->second;
+                ans[1]=i;
+                return ans;
+            }
+            seen[nums[i]]=i; 
+        } 
+        return {};
+        
+        
+    }
+};
