@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int front = 1;
+        int back = 1;
+        int n = nums.size();
+        vector<int> backs (n);
+        for(int i = n-1; i>-1; i--)
+        {
+            backs[i]=back;
+            back*=nums[i];
+        }
+        for(int i = 0; i < n; i++)
+        {
+            backs[i]=front*backs[i];
+            front*=nums[i];
+        }
+        
+        return backs;
+
+    }
+};
